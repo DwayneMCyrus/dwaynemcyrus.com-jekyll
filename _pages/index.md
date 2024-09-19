@@ -26,6 +26,35 @@ The easiest way to get started is to read this [step-by-step guide explaining ho
   {% endfor %}
 </ul>
 
+<strong>Recently updated drugs</strong>
+
+<ul>
+  {% assign recent_drugs = site.drugs | sort: "last_modified_at_timestamp" | reverse %}
+  {% for drug in recent_drugs limit: 5 %}
+    <li>
+      {{ drug.last_modified_at | date: "%Y-%m-%d" }} — <a class="internal-link" href="{{ site.baseurl }}{{ drug.url }}">{{ drug.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+<hr>
+
+<strong> Staff members list </strong>
+{% for staff_member in site.staff_members %}
+  <h5>Title: {{ staff_member.name }} - {{ staff_member.position }}</h5>
+  <p>{{ staff_member.content | markdownify }}</p>
+{% endfor %}
+
+{% for staff_member in site.staff_members %}
+  <h6> Link Title: 
+    <a href="{{ staff_member.url }}">
+      {{ staff_member.name }} - {{ staff_member.position }}
+    </a>
+  </h6>
+  <p>{{ staff_member.content | markdownify }}</p>
+{% endfor %}
+
+
 <style>
   .wrapper {
     max-width: 46em;

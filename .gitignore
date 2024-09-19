@@ -1,3 +1,6 @@
+# Temp files during development
+_dev/
+
 # Generated website directory
 _site/
 
@@ -16,3 +19,4 @@ _includes/notes_graph.json
 
 # MacOS files
 .DS_Store
+
